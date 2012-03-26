@@ -3,8 +3,6 @@
 (function() {
 	if (Ti.version < 1.8 ) {
 		alert('Sorry - this application requires Titanium Mobile SDK 1.8 or later');
-	} else if (Ti.Platform.osname === 'mobileweb') {
-		alert('Sorry - this application is not yet fully implemented for mobilweb');
 	}
 	else {
 		var ApplicationWindow = require('ui/ApplicationWindow').ApplicationWindow;

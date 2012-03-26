@@ -71,12 +71,13 @@ exports.ApplicationWindow = function() {
 		
 		// Handle all map annotation clicks
 		mapview.addEventListener('click', function(e) {
-	        if (e.annotation && (e.clicksource === 'leftButton' || e.clicksource == 'leftPane')) {    
-	            mapview.removeAnnotation(e.annotation);
-	        }         
+			if (e.annotation && (e.clicksource === 'leftButton' || e.clicksource == 'leftPane')) {  
+				mapview.removeAnnotation(e.annotation);
+			}         
 		});
 		self.add(mapview);
 	});
+	
 	
 	// Execute forward geocode on button click
 	button.addEventListener('click', function() {	

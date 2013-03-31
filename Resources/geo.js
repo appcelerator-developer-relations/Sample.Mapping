@@ -12,7 +12,7 @@ var GeoData = function(title, latitude, longitude) {
 };
 
 exports.forwardGeocode = function(address, callback) {
-	if (Ti.Platform.osname === 'mobileweb') {
+	if (Ti.Platform.osname === 'mobileweb' || Ti.Platform.osname === 'tizen') {
 		forwardGeocodeWeb(address, callback);
 	} else {
 		forwardGeocodeNative(address, callback);

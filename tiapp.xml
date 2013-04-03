@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><ti:app xmlns:ti="http://ti.appcelerator.org">
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
     <sdk-version>3.1.0</sdk-version>
     <deployment-targets>
+        <target device="tizen">true</target>
         <target device="mobileweb">true</target>
         <target device="iphone">true</target>
         <target device="ipad">true</target>
         <target device="android">true</target>
-        <target device="tizen">true</target>
         <target device="blackberry">false</target>
-<target device="tizen">false</target>
     </deployment-targets>
     <id>com.appcelerator.sample.mapping</id>
     <name>Geocoder</name>
@@ -41,38 +41,10 @@
         <theme>default</theme>
     </mobileweb>
     <modules/>
-        <tizen xmlns:tizen="http://ti.appcelerator.org" appid="C8tf8UBqZZ">
-        <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
-        <tizen:privilege name="http://tizen.org/privilege/alarm"/>
+    <tizen appid="C8tf8UBqZZ" xmlns:tizen="http://ti.appcelerator.org">
         <tizen:privilege name="http://tizen.org/privilege/application.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/bluetooth.admin"/>
-        <tizen:privilege name="http://tizen.org/privilege/bluetooth.gap"/>
-        <tizen:privilege name="http://tizen.org/privilege/bluetooth.spp"/>
-        <tizen:privilege name="http://tizen.org/privilege/calendar.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/calendar.write"/>
-        <tizen:privilege name="http://tizen.org/privilege/callhistory.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/callhistory.write"/>
-        <tizen:privilege name="http://tizen.org/privilege/contact.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/contact.write"/>
-        <tizen:privilege name="http://tizen.org/privilege/content.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/content.write"/>
-        <tizen:privilege name="http://tizen.org/privilege/download"/>
-        <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
-        <tizen:privilege name="http://tizen.org/privilege/messaging.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/messaging.send"/>
-        <tizen:privilege name="http://tizen.org/privilege/messaging.write"/>
-        <tizen:privilege name="http://tizen.org/privilege/nfc.admin"/>
-        <tizen:privilege name="http://tizen.org/privilege/nfc.cardemulation"/>
-        <tizen:privilege name="http://tizen.org/privilege/nfc.common"/>
-        <tizen:privilege name="http://tizen.org/privilege/nfc.p2p"/>
-        <tizen:privilege name="http://tizen.org/privilege/nfc.tag"/>
-        <tizen:privilege name="http://tizen.org/privilege/notification.read"/>
-        <tizen:privilege name="http://tizen.org/privilege/notification.write"/>
-        <tizen:privilege name="http://tizen.org/privilege/power"/>
-        <tizen:privilege name="http://tizen.org/privilege/setting"/>
         <tizen:privilege name="http://tizen.org/privilege/systeminfo"/>
         <tizen:privilege name="http://tizen.org/privilege/tizen"/>
-        <access origin="*" subdomains="true"/>
+        <access origin="*" subdomains="true"/>    	
     </tizen>
 </ti:app>

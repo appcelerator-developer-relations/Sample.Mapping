@@ -1,4 +1,4 @@
-var GOOGLE_BASE_URL = 'http://maps.googleapis.com/maps/geo?output=json&q=';
+var GOOGLE_BASE_URL = 'http://maps.google.com/maps/api/geocode/json?address=';
 var ERROR_MESSAGE = 'There was an error geocoding. Please try again.';
 exports.LATITUDE_BASE = 37.389569;
 exports.LONGITUDE_BASE = -122.050212;
@@ -20,19 +20,21 @@ exports.forwardGeocode = function(address, callback) {
 };
 
 var forwardGeocodeNative = function(address, callback) {
+	var url = GOOGLE_BASE_URL + address.replace(' ', '+') ;
+	    url += "&sensor=" + (Titanium.Geolocation.locationServicesEnabled == true);
 	var xhr = Titanium.Network.createHTTPClient();
-	xhr.open('GET', GOOGLE_BASE_URL + address);
+	xhr.open('GET', url);
 	xhr.onload = function() {
 	    var json = JSON.parse(this.responseText);
-	    if (!json.Placemark || !json.Placemark[0].Point || !json.Placemark[0].Point.coordinates) {
+	    if (json.status != 'OK') {
 	    	alert('Unable to geocode the address');
 	    	return;
 	    }
 	    
 	    callback(new GeoData(
 	    	address,
-	    	json.Placemark[0].Point.coordinates[1],
-	    	json.Placemark[0].Point.coordinates[0]
+	    	json.results[0].geometry.location.lat,
+	    	json.results[0].geometry.location.lng
 	    ));
 	};
 	xhr.onerror = function(e) {

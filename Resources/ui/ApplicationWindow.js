@@ -1,19 +1,36 @@
 //Application Window Component Constructor
 exports.ApplicationWindow = function() {
+function isiOS7Plus()
+{
+  // iOS-specific test
+  if (Titanium.Platform.name == 'iPhone OS')
+  {
+    var version = Titanium.Platform.version.split(".");
+    var major = parseInt(version[0],10);
+
+    // Can only test this support on a 3.2+ device
+    if (major >= 7)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
+var iOS7 = isiOS7Plus();
+var theTop = iOS7 ? 20 : 0;
+
 	var geo = require('geo');
-	
+
 	//create object instance
 	var self = Ti.UI.createWindow({
-		backgroundColor:'#fff',
-		fullscreen: false,
-		exitOnClose: true
+		backgroundColor: '#800'
 	});
 
 	// create UI components
 	var view = Ti.UI.createView({
 		backgroundColor: '#800',
-		height: '50dp',
-		top: 0
+		top: theTop
 	});
 	var textfield = Ti.UI.createTextField({
 		height: '40dp',
@@ -29,7 +46,7 @@ exports.ApplicationWindow = function() {
 		title: '+',
 		font: {
 			fontSize: '20dp',
-			fontWeight: 'bold'	
+			fontWeight: 'bold'
 		},
 		top: '5dp',
 		height: '40dp',
@@ -37,28 +54,28 @@ exports.ApplicationWindow = function() {
 		right: '5dp'
 	});
 	var mapview;
-	
+
 	// add map after window opens
 	self.addEventListener('open', function() {
 		// Make sure we only add the map once
 		if (mapview !== undefined) {
-			return;	
+			return;
 		}
-		
+
 		mapview = Titanium.Map.createView({
-		    mapType: Titanium.Map.STANDARD_TYPE,
-		    region: {
-	    		latitude: geo.LATITUDE_BASE, 
-	    		longitude: geo.LONGITUDE_BASE,
-		        latitudeDelta: 0.1, 
-		        longitudeDelta: 0.1
-		    },
-		    animate:true,
-		    regionFit:true,
-		    userLocation:false,
-		    top: '50dp'
+			mapType: Titanium.Map.STANDARD_TYPE,
+			region: {
+				latitude: geo.LATITUDE_BASE,
+				longitude: geo.LONGITUDE_BASE,
+				latitudeDelta: 0.1,
+				longitudeDelta: 0.1
+			},
+			animate: true,
+			regionFit: true,
+			userLocation: false,
+			top: '70dp'
 		});
-		
+
 		// Add initial annotation
 		mapview.addAnnotation(Ti.Map.createAnnotation({
 			animate: true,
@@ -68,42 +85,42 @@ exports.ApplicationWindow = function() {
 			longitude: geo.LONGITUDE_BASE,
 			leftButton: '/images/delete.png'
 		}));
-		
+
 		// Handle all map annotation clicks
 		mapview.addEventListener('click', function(e) {
-			if (e.annotation && (e.clicksource === 'leftButton' || e.clicksource == 'leftPane')) {  
+			if (e.annotation && (e.clicksource === 'leftButton' || e.clicksource == 'leftPane')) {
 				mapview.removeAnnotation(e.annotation);
-			}         
+			}
 		});
 		self.add(mapview);
 	});
-	
-	
+
+
 	// Execute forward geocode on button click
-	button.addEventListener('click', function() {	
+	button.addEventListener('click', function() {
 		textfield.blur();
 		geo.forwardGeocode(textfield.value, function(geodata) {
 			mapview.addAnnotation(Ti.Map.createAnnotation({
-		    	animate: true,
-		    	pincolor: Titanium.Map.ANNOTATION_RED,
-		    	title: geodata.title,
-		    	latitude: geodata.coords.latitude,
-		    	longitude: geodata.coords.longitude,
-		    	leftButton: '/images/delete.png'
-		    })); 
-		    mapview.setLocation({
-		    	latitude: geodata.coords.latitude, 
-		    	longitude: geodata.coords.longitude,
-		        latitudeDelta: 1, 
-		        longitudeDelta: 1
-		    });
+				animate: true,
+				pincolor: Titanium.Map.ANNOTATION_RED,
+				title: geodata.title,
+				latitude: geodata.coords.latitude,
+				longitude: geodata.coords.longitude,
+				leftButton: '/images/delete.png'
+			}));
+			mapview.setLocation({
+				latitude: geodata.coords.latitude,
+				longitude: geodata.coords.longitude,
+				latitudeDelta: 1,
+				longitudeDelta: 1
+			});
 		});
 	});
-	
+
 	// assemble view hierarchy
 	view.add(textfield);
 	view.add(button);
 	self.add(view);
-	
+
 	return self;
 };

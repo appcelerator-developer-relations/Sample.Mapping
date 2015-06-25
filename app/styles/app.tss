@@ -1,0 +1,21 @@
+'Label[platform=android]': {
+	color: '#000' // all platforms except Android default to black
+}
+
+'Window': {
+	backgroundColor: '#fff' // white background instead of default transparent
+}
+
+// on iOS7+ the window begins under the statusBar, allowing us to set the color here
+'Window[platform=ios]': {
+	backgroundColor: Alloy.CFG.brandPrimary
+}
+
+'.canvas[platform=ios]': {
+
+	// on iOS7+ we'll set this global to 20 in alloy.js to move the actual content under the statusBar
+	top: Alloy.Globals.canvasTop,
+
+	// make our canvas white, leaving only the statusBar red
+	backgroundColor: '#fff'
+}

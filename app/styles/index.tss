@@ -1,0 +1,32 @@
+'#searchMenu': {
+	icon: Ti.Android.R.drawable.ic_menu_search,
+	showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+}
+
+'.canvas': {
+	layout: 'vertical'
+}
+
+'SearchBar': {
+	barColor: Alloy.CFG.brandPrimary
+}
+
+'#map': {
+	regionFit: true
+}
+
+'.typeBtn': {
+	width: 90,
+	right: 15,
+	top: 15,
+
+	// FIXME: https://jira.appcelerator.org/browse/MOD-2132
+	zIndex: 1,
+
+	backgroundColor: '#CFFF',
+	borderColor: '#ccc',
+	borderWidth: 1,
+
+	// Android: Defaults to white
+	color: '#444'
+}

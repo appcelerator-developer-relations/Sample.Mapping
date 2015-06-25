@@ -1,3 +1,14 @@
+* Self-executing functions
+* Ti.Map
+* Module tag
+* Ti.Geolocation
+* CLI plugins
+* Custom Fonts (no need to add to tiapp)
+* Icon Fonts (generator)
+* FIXME & tickets
+alloy generate model location sql title:text longitude:float latitude:float
+
+
 # Sample.Mapping
 
 This is a Titanium Mobile sample app that uses native maps to plot locations. With it you can forward geocode addresses and add them as annotations to the map.

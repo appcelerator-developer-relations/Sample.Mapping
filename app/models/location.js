@@ -1,15 +1,26 @@
 exports.definition = {
+
 	config: {
+
+		// For the sql-type these are the column names and types
 		columns: {
 			title: 'TEXT',
 			longitude: 'REAL',
 			latitude: 'REAL'
 		},
+
 		adapter: {
-			type: 'properties',
+
+			// We use the built-in sql-type for SQLite
+			type: 'sql',
+
+			// For the sql-type, this is the table name
 			collection_name: 'location'
 		}
 	},
+
+	// You could leave out the next auto-generated part
+
 	extendModel: function (Model) {
 		_.extend(Model.prototype, {
 			// extended functions and properties go here

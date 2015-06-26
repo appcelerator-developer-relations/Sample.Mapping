@@ -3,10 +3,10 @@
     <id>com.appcelerator.sample.mapping</id>
     <name>Geocoder</name>
     <version>2.0.0</version>
-    <publisher>Appcelerator</publisher>
-    <url>http://appcelerator.com</url>
-    <description>undefined</description>
-    <copyright>2015 by Appcelerator</copyright>
+    <publisher>Appcelerator, Inc.</publisher>
+    <url>http://www.appcelerator.com</url>
+    <description>A cross platform sample application to geocode and reverse geocode locations.</description>
+    <copyright>2015 by Appcelerator, Inc.</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
@@ -42,7 +42,7 @@
     </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
-            <application android:theme="@style/apcelerator">
+            <application android:theme="@style/appcelerator">
                 <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBDuTWLdPRaKN2eTTQKVc-QDNdCS6RxzPM"/>
             </application>
             <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22"/>

@@ -135,6 +135,9 @@ function transformLocation(model) {
 	// Add a subtitle, showing the position
 	transformed.subtitle = model.get('latitude') + ', ' + model.get('longitude');
 
+	// TODO: Draggable pins, blocked by https://jira.appcelerator.org/browse/MOD-2131
+	// TODO: Buttons in callout to remove a model, blocked by https://jira.appcelerator.org/browse/MOD-2130
+
 	return transformed;
 }
 

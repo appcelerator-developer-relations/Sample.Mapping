@@ -1,0 +1,60 @@
+'#searchMenu': {
+
+	// Use an standard Android drawable
+	icon: Ti.Android.R.drawable.ic_menu_search,
+
+	// Always show the menu item in the ActionBar
+	// The ActionView can (and will be by default) collapsed (hidden) until you tap the icon
+	showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+}
+
+'.canvas': {
+
+	// Use vertical layout so the Map comes below the SearchBar, no matter its height
+	layout: 'vertical'
+}
+
+'SearchBar': {
+
+	// Use the color set in config.json
+	barColor: Alloy.CFG.brandPrimary
+}
+
+'#map': {
+
+	// Allow the user to rotate the map on iOS7+
+	rotatesEnabled: true,
+
+	// Show the user location
+	userLocation: true
+}
+
+'.typeBtn': {
+	width: 90,
+
+	// Same height as Android userLocation control
+	height: 38,
+
+	// Position it top left, since that's the only free corner on both iOS and Android
+	top: 11,
+	left: 11,
+
+	// FIXME: https://jira.appcelerator.org/browse/MOD-2132
+	zIndex: 1,
+
+	backgroundColor: '#CFFF',
+	borderColor: '#EEE',
+	borderWidth: 1,
+	borderRadius: 2
+}
+
+// Like in views, we can also use conditional statements in styles
+'.typeBtn[platform=android]': {
+
+	// Make it same color as the Android zoom controls
+	color: '#666'
+}
+
+'.typeBtn[platform=ios]': {
+	tintColor: Alloy.CFG.brandPrimary
+}

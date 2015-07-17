@@ -1,0 +1,49 @@
+<Alloy>
+
+	<!-- Creates a singleton instance of the location collection -->
+	<Collection src="location" />
+
+	<!-- iOS: The window will start behind the statusBar -->
+	<Window>
+
+		<!-- Android: Add MenuItem with ActionView for search -->
+		<Menu platform="android">
+
+			<!-- We give it an id so we can collapse the ActionView in the controller -->
+			<MenuItem id="searchMenu">
+
+				<!-- On Android menu items can contain a view -->
+				<ActionView>
+
+					<!-- Since there are multiple SearchView objects, we need to specificy the namespace -->
+					<SearchView ns="Ti.UI.Android" hintText="Location" onSubmit="geocodeLocation" />
+
+				</ActionView>
+
+			</MenuItem>
+		</Menu>
+
+		<!-- iOS: Thanks to canvasTop in alloy.js and app.tss this starts below the statusBar -->
+		<View class="canvas">
+
+			<SearchBar platform="ios" hintText="Location" onReturn="geocodeLocation" />
+
+			<!-- 
+				More preferable would be to use <View module="ti.map"> but Alloy doesn't recognize it as a map
+				FIXME: https://jira.appcelerator.org/browse/ALOY-1282
+
+				Either way, the module-tag is very powerful. It translates to `require('ti.map').create<Tag|method>`
+				allowing you to provide your own UI factory methodes in a native or CommonJS module. In this case
+				the view is delivered by the `ti.map` add-on module.
+			-->
+			<Module module="ti.map" method="createView" id="map" dataCollection="location" dataTransform="transformLocation" onLongclick="reverseGeocode">
+
+				<!-- Maps can contain child views as overlays -->
+				<Button class="typeBtn" onClick="changeMapType">Map Type</Button>
+
+			</Module>
+
+		</View>
+
+	</Window>
+</Alloy>

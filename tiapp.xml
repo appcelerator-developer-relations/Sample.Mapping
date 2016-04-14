@@ -6,14 +6,18 @@
     <publisher>Appcelerator, Inc.</publisher>
     <url>http://www.appcelerator.com</url>
     <description>A cross platform sample application to geocode and reverse geocode locations.</description>
-    <copyright>2015 by Appcelerator, Inc.</copyright>
+    <copyright>2016 by Appcelerator, Inc.</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>11111111-1111-1111-1111-111111111111</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="ti.version.range" type="string">&gt;=5.2.2</property>
     <ios>
+        <min-ios-ver>8.4</min-ios-ver>
+        <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+        <default-background-color>#C7172C</default-background-color>
         <plist>
             <dict>
                 <key>UISupportedInterfaceOrientations~iphone</key>
@@ -45,12 +49,8 @@
             <application android:theme="@style/appcelerator">
                 <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBDuTWLdPRaKN2eTTQKVc-QDNdCS6RxzPM"/>
             </application>
-            <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22"/>
         </manifest>
     </android>
-    <mobileweb>
-        <theme>default</theme>
-    </mobileweb>
     <modules>
         <module platform="iphone">ti.map</module>
         <module platform="android">ti.map</module>
@@ -61,9 +61,9 @@
         <target device="ipad">true</target>
         <target device="android">true</target>
     </deployment-targets>
-    <sdk-version>4.1.0.GA</sdk-version>
+    <sdk-version>5.2.2.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
-        <plugin version="1.0">ti.map</plugin>
+        <plugin version="1.0">ti.version</plugin>
     </plugins>
 </ti:app>

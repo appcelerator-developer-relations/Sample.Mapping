@@ -15,12 +15,9 @@
 // wrap your code in a self-executing function.
 (function (global) {
 
-	// Without the self-executing function this would polute global scope.
-	var iOS7UP = (OS_IOS && parseInt(Ti.Platform.version[0], 10) >= 7);
-
-	// On iOS7 and up views start behind the 20dp high statusBar. we use this
+	// On iOS views start behind the 20dp high statusBar. we use this
 	// global in styles/app.tss to make sure our canvas starts under it.
-	Alloy.Globals.canvasTop = iOS7UP ? 20 : 0;
+	Alloy.Globals.canvasTop = OS_IOS ? 20 : 0;
 
 	// We pass `this` so you could use `global.foo` to force a global variable.
 })(this);

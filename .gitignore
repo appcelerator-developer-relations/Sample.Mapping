@@ -9,3 +9,5 @@ tmp
 .settings
 Thumbs.db
 classic
+/i18n
+/platform

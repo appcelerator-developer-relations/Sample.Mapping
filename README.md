@@ -24,7 +24,7 @@ For this app we detect if the user is running iOS7 or later and set a global to 
 
 * Guide [Initializer File](http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_Controllers-section-34636384_AlloyControllers-InitializerFile(alloy.js))
 
-## Global Styles: [app.ts](app/styles/app.tss)
+## Global Styles: [app.tss](app/styles/app.tss)
 Even though this app only has one view, it's a best practice to use [app/styles/app.tss](app/styles/app.tss) for your base styles. It's an ideal place to override platform defaults, like the color of a `Label`, which is grey on Android instead of black like the others.
 
 For this app this is also where play with the Window and canvas to give the statusBar a red backgroundColor. See *Globals* for more information.

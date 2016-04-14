@@ -1,67 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <sdk-version>5.0.0.GA</sdk-version>
+    <id>com.appcelerator.sample.mapping</id>
+    <guid>11111111-1111-1111-1111-111111111111</guid>
+    <name>Geocoder</name>
+    <version>2.0.0</version>
+    <publisher>Appcelerator, Inc.</publisher>
+    <url>http://www.appcelerator.com</url>
+    <description>A cross platform sample application to geocode and reverse geocode locations.</description>
+    <copyright>2016 by Appcelerator, Inc.</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>11111111-1111-1111-1111-111111111111</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="ti.version.range" type="string">&gt;=5.2.2</property>
+    <ios>
+        <min-ios-ver>8.4</min-ios-ver>
+        <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+        <default-background-color>#C7172C</default-background-color>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleLightContent</string>
+                <key>NSLocationWhenInUseUsageDescription</key>
+                <string>Geocode your location</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest>
+            <application android:theme="@style/appcelerator">
+                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBDuTWLdPRaKN2eTTQKVc-QDNdCS6RxzPM"/>
+            </application>
+        </manifest>
+    </android>
+    <modules>
+        <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
+    </modules>
     <deployment-targets>
-        <target device="mobileweb">true</target>
+        <target device="mobileweb">false</target>
         <target device="iphone">true</target>
         <target device="ipad">true</target>
         <target device="android">true</target>
     </deployment-targets>
-    <id>com.appcelerator.sample.mapping</id>
-    <guid>11111111-1111-1111-1111-111111111111</guid>
-    <name>Geocoder</name>
-    <version>1.0</version>
-    <publisher>tlukasavage</publisher>
-    <url>http://appcelerator.com</url>
-    <description>not specified</description>
-    <copyright>2011-2014 by tlukasavage</copyright>
-    <icon>appicon.png</icon>
-    <persistent-wifi>false</persistent-wifi>
-    <prerendered-icon>false</prerendered-icon>
-    <statusbar-style>default</statusbar-style>
-    <statusbar-hidden>false</statusbar-hidden>
-    <fullscreen>false</fullscreen>
-    <navbar-hidden>true</navbar-hidden>
-    <analytics>true</analytics>
-    <iphone>
-        <orientations device="iphone">
-            <orientation>Ti.UI.PORTRAIT</orientation>
-        </orientations>
-        <orientations device="ipad">
-            <orientation>Ti.UI.PORTRAIT</orientation>
-            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
-        </orientations>
-    </iphone>
-    <android xmlns:android="http://schemas.android.com/apk/res/android">
-       <manifest>
-           <!-- Allows the API to download data from Google Map servers -->
-           <uses-permission android:name="android.permission.INTERNET"/>
-           <!-- Allows the API to cache data -->
-           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-           <!-- Use GPS for device location -->
-           <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-           <!-- Use Wi-Fi or mobile connection for device location -->
-           <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-           <!-- Allows the API to access Google web-based services -->
-           <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-           <!-- Specify OpenGL ES 2.0 as a requirement -->
-           <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-           <uses-permission android:name="com.appcelerator.sample.mapping.permission.MAPS_RECEIVE"/>
-           <permission
-               android:name="com.appcelerator.sample.mapping.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
-           <application>
-               <meta-data
-                   android:name="com.google.android.maps.v2.API_KEY" android:value="YOUR API KEY HERE"/>
-           </application>
-       </manifest>
-   </android>
-    <mobileweb>
-        <theme>default</theme>
-    </mobileweb>
-    <modules>
-        <module platform="android">ti.map</module>
-        <module platform="iphone">ti.map</module>
-    </modules>
+    <sdk-version>5.2.2.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+        <plugin version="1.0">ti.version</plugin>
+    </plugins>
 </ti:app>

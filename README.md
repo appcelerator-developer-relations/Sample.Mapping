@@ -50,7 +50,12 @@ For Android, the module needs a [Google API key](http://docs.appcelerator.com/pl
   * [Map Module](http://docs.appcelerator.com/platform/latest/#!/api/Modules.Map)
   * [iOS Map Kit](http://docs.appcelerator.com/platform/latest/#!/guide/iOS_Map_Kit)
 
-## Geolocation
+## Geolocation run-time permissions
+Since Android 6 you will need check and request permission to use GPS at run-time. To support this for iOS and Android through cross-platform APIs we've re-architected run-time permissions in [Titanium 5.1.0](http://www.appcelerator.com/blog/2015/11/titanium-5-1-0-sample-app/).
+
+To keep our code clean, the sample app uses a [permissions.js](app/lib/permissions.js) library to handle checking and requesting run-time permissions.
+
+## Geocoding
 To forward and reverse geocode locations on the map, we use `Ti.Geolocation`. This uses [MapQuest Open Nominatim Search Service](http://open.mapquestapi.com/nominatim/). While this API has the advantage that it has no daily usage limits, please note that the data backing this API is crowd sourced and might not return proper values for valid addresses and geographic coordinates. If geocoding services are essential component of the application, developers are encouraged to use commercial geocoding providers.
 
 ## Strict Mode

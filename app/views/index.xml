@@ -1,7 +1,7 @@
 <Alloy>
 
 	<!-- iOS: The window will start behind the statusBar -->
-	<Window>
+	<Window onOpen="showCurrentPosition">
 
 		<!-- Android: Add MenuItem with ActionView for search -->
 		<Menu platform="android">

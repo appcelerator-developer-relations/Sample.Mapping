@@ -1,5 +1,7 @@
-// We need a reference to the ti.map module
+// DEPENDENCIES
+
 var map = require('ti.map');
+var permissions = require('permissions');
 
 // List of map types to traverse, and our initial index
 var mapTypes = [map.NORMAL_TYPE, map.SATELLITE_TYPE, map.HYBRID_TYPE];
@@ -26,29 +28,42 @@ if (OS_ANDROID) {
   // the name of the controller/view.
   $.index.open();
 
-  // Show our current position on the map
-  showCurrentPosition();
-
 })(arguments[0] || {});
 
 /**
+ * Bound to the Window's open event via XML.
  * Gets our current position and then continues the same process as when you
  * longpress somewhere on the map, which is reverseGeocode().
  */
 function showCurrentPosition() {
   'use strict';
 
-  // Get our current position
-  Ti.Geolocation.getCurrentPosition(function(e) {
+  // Use library to handle run-time permissions
+  permissions.requestLocationPermissions(Ti.Geolocation.AUTHORIZATION_WHEN_IN_USE, function(e) {
 
-    // FIXME: https://jira.appcelerator.org/browse/TIMOB-19071
-    if (!e.success || e.error) {
-      return alert('Could not find your position.');
+    if (!e.success) {
+
+      // In some cases the library will already have displayed a dialog, in other cases we receive a message to alert
+      if (e.error) {
+        alert(e.error);
+      }
+
+      return;
     }
 
-    // Continue the same process as when the user longpresses on the map,
-    // passing `true` to let it center the map
-    reverseGeocode(e.coords, true);
+    // Get our current position
+    Ti.Geolocation.getCurrentPosition(function(e) {
+
+      // FIXME: https://jira.appcelerator.org/browse/TIMOB-19071
+      if (!e.success || e.error) {
+        return alert(e.error || 'Could not find your position.');
+      }
+
+      // Continue the same process as when the user longpresses on the map,
+      // passing `true` to let it center the map
+      reverseGeocode(e.coords, true);
+    });
+
   });
 }
 
@@ -73,7 +88,7 @@ function reverseGeocode(coords, center) {
   Ti.Geolocation.reverseGeocoder(location.latitude, location.longitude, function(e) {
 
     if (!e.success || e.error) {
-      return alert('Could not reverse geocode the position.');
+      return alert(e.error || 'Could not reverse geocode the position.');
     }
 
     // Use the address of the first place found for the title
@@ -130,7 +145,7 @@ function geocodeLocation(e) {
   Ti.Geolocation.forwardGeocoder(address, function(e) {
 
     if (!e.success || e.error) {
-      return alert('Could not geocode the location.');
+      return alert(e.error || 'Could not geocode the location.');
     }
 
     if (OS_ANDROID) {

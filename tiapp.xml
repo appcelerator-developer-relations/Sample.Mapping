@@ -12,7 +12,6 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>11111111-1111-1111-1111-111111111111</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.version.range" type="string">&gt;=5.2.2</property>
     <ios>

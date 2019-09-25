@@ -56,14 +56,23 @@ function requestLocationPermissions(authorizationType, callback) {
   }
 
   // Request permission
-  Ti.Geolocation.requestLocationPermissions(Ti.Geolocation.AUTHORIZATION_ALWAYS, function(e) {
+  Ti.Geolocation.requestLocationPermissions(authorizationType, function(e) {
 
     if (!e.success) {
-      return callback({
-        success: false,
-        error: e.error || 'Failed to request Location Permissions'
-      });
+    	if (OS_IOS) {
+    		dialogs.confirm({
+        	title: 'Permission Denied',
+        		message: 'Tap Yes to open the Settings app to restore permissions, then try again.',
+        		callback: function() {
+           			Ti.Platform.openURL(Ti.App.iOS.applicationOpenSettingsURL);
+        		}
+     		 });
+    	} else {
+    	alert('Permission Denied');
     }
+     
+      return;
+     }
 
     callback({
       success: true

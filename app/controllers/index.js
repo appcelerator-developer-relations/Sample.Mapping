@@ -124,7 +124,7 @@ function setAnnotation(location) {
   });
 
   // replace previous annotation
-  $.map.setAnnotations([annotation]);
+  $.map.annotation = [annotation];
 }
 
 /**
